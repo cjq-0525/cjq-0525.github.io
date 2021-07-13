@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>交集、并集、差集 | 我的博客园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="什么是 SetSet 对象是值的集合，可以按照插入的顺序迭代它的元素，元素只会出现一次，即 Set  是不按特定顺序存储的且值唯一的集合。与堆栈、队列和数组等其他集合类型不同，Set 可用于列表比较，并用于检测集合中是否存在某个项。 Set 是一种抽象数据类型，它是由其行为定义的，类似堆栈和队列数据结构。由于key-key的特性，这一点与 Map 类似，详情可以参阅《ECMAScript 6的Ma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交集、并集、差集">
+<meta property="og:url" content="http://example.com/2019/07/20/promise/index.html">
+<meta property="og:site_name" content="我的博客园">
+<meta property="og:description" content="什么是 SetSet 对象是值的集合，可以按照插入的顺序迭代它的元素，元素只会出现一次，即 Set  是不按特定顺序存储的且值唯一的集合。与堆栈、队列和数组等其他集合类型不同，Set 可用于列表比较，并用于检测集合中是否存在某个项。 Set 是一种抽象数据类型，它是由其行为定义的，类似堆栈和队列数据结构。由于key-key的特性，这一点与 Map 类似，详情可以参阅《ECMAScript 6的Ma">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-20T06:31:42.000Z">
+<meta property="article:modified_time" content="2021-07-13T09:02:36.209Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="我的博客园" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">我的博客园</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-promise" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/07/20/promise/" class="article-date">
+  <time class="dt-published" datetime="2019-07-20T06:31:42.000Z" itemprop="datePublished">2019-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      交集、并集、差集
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是-Set"><a href="#什么是-Set" class="headerlink" title="什么是 Set"></a>什么是 Set</h3><p>Set 对象是值的集合，可以按照插入的顺序迭代它的元素，元素只会出现一次，即 Set  是不按特定顺序存储的且值唯一的集合。与堆栈、队列和数组等其他集合类型不同，Set 可用于列表比较，并用于检测集合中是否存在某个项。</p>
+<p>Set 是一种抽象数据类型，它是由其行为定义的，类似堆栈和队列数据结构。由于key-key的特性，这一点与 Map 类似，详情可以参阅《ECMAScript 6的Map映射》。</p>
+<p>Javascript Set</p>
+<p>Javascript 中的 Set 是非常基础和简单的，它不像其他语言那样提供通用的集操作功能。它使用了一种独特的算法（不是基于严格的相等 === ）来检测元素是否相同。</p>
+<p>这意味着在集合中存储 undefined、null 和 NaN 将只会存储一次，即使是 NaN !== NaN ，它通常应用于对象类型的存储。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> setTest = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">0</span>, -<span class="number">0</span>, <span class="literal">Infinity</span>,<span class="literal">null</span>, <span class="literal">undefined</span>, <span class="literal">null</span>, <span class="literal">NaN</span>, <span class="literal">NaN</span>, <span class="literal">Infinity</span>,<span class="literal">null</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(setTest);  <span class="comment">// Set &#123; 0, Infinity, null, undefined, NaN &#125;</span></span><br></pre></td></tr></table></figure>
+<p>从上面的执行结果可以得出以下结论：</p>
+<p>虽然 NaN 和 NaN 不相等，但是在 Set 集合里面只会存在一个undefined 和 Infinity 在 Set 集合里面只会存在一个</p>
+<p>基本 Set 的使用本文就不介绍了，可以参阅 mozilla 网站。</p>
+<h3 id="什么时候使用-Set"><a href="#什么时候使用-Set" class="headerlink" title="什么时候使用 Set"></a>什么时候使用 Set</h3><p>当需要对特定列表执行比较和判断是否相等时，可以使用 Set，下面大家描述一下适用的场合，主要就是数据里的集合操作：</p>
+<p>获取两个集合的并集<br>union<br>获取两个集合的差集<br>difference<br>获取两个集合的交集<br>intersection<br>获取两个集合的对称差集<br>intersectionDifference<br>判断两个集合是否为子集<br>isSubset<br>判断两个集合是否为超集<br>isSuperset</p>
+<h3 id="下面就以这三个场合来介绍-Set-的相关操作。"><a href="#下面就以这三个场合来介绍-Set-的相关操作。" class="headerlink" title="下面就以这三个场合来介绍 Set 的相关操作。"></a>下面就以这三个场合来介绍 Set 的相关操作。</h3><p>Set 操作</p>
+<p>在数学中，每当谈论集合时，都可以执行一些操作，实际上，Set 是数学有限集的计算机实现方式。</p>
+<p>为了在代码中更好的展示 Set 操作，示例代码将 扩展 Javascript Set 以继承其属性和方法，并为其增加其它的方法。</p>
+<p>对于示例代码，只用了一个简单的方法来检查是否为不为空的有效的集合。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SetHelper</span> <span class="keyword">extends</span> <span class="title">Set</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证集合是否为有效集合</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;*&#125;</span> <span class="variable">set</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@returns</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    _isValid = <span class="function">(<span class="params">set</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> set &amp;&amp; set <span class="keyword">instanceof</span> <span class="built_in">Set</span> &amp;&amp; set.size &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="并集-union"><a href="#并集-union" class="headerlink" title="并集 union"></a>并集 union</h3><p>union 操作将合并多个 Set 对象并返回合并后的结果。实现上将当前集和给定集合并到一个数组中并创建它，从而返回一个新的集合。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">union</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValid(set)) <span class="keyword">return</span> <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SetHelper([...this, ...set]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="差集-difference"><a href="#差集-difference" class="headerlink" title="差集 difference"></a>差集 difference</h3><p>difference 操作将返回一个新的集合，新集合只包含在一个集合中并且不在另一个集合中的元素，即数学的差集概念。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">difference</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValid(set)) <span class="keyword">return</span> <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="keyword">const</span> differenceSet = <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="built_in">this</span>.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">        !set.has(item) &amp;&amp; differenceSet.add(item);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> differenceSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="交集-intersection"><a href="#交集-intersection" class="headerlink" title="交集 intersection"></a>交集 intersection</h3><p>intersection 操作返回只包含两个集合共同拥有的元素的新集合。实现上将遍历较小的集合（避免不必要的检查）并检查每一项是否存在于较大的集合中并将其添加到交集中，遍历完成后将返回交集。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">intersection</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> intersectionSet = <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValid(set)) <span class="keyword">return</span> intersectionSet;</span><br><span class="line">    <span class="keyword">const</span> [smallerSet, biggerSet] =</span><br><span class="line">        set.size &lt;= <span class="built_in">this</span>.size ? [set, <span class="built_in">this</span>] : [<span class="built_in">this</span>, set];</span><br><span class="line">    smallerSet.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">        biggerSet.has(item) &amp;&amp; intersectionSet.add(item);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> intersectionSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="对称差集-intersectionDifference"><a href="#对称差集-intersectionDifference" class="headerlink" title="对称差集 intersectionDifference"></a>对称差集 intersectionDifference</h3><p>intersectionDifference 操作将返回其中包含两个集合没有交集的所有元素的新集合。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">intersectionDifference</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValid(set)) <span class="keyword">return</span> <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SetHelper([</span><br><span class="line">        ...this.difference(set),</span><br><span class="line">        ...set.difference(<span class="built_in">this</span>),</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="子集-subset"><a href="#子集-subset" class="headerlink" title="子集 subset"></a>子集 subset</h3><p>isSubset 操作将判断两个集合是否为子集关系（当一个集合的所有项都包含在另一个集合中时）。实现上首先检查两个集合的大小，如果一个集合更大，则它不能是另一个集合的子集，然后对于每个项目，它检查它是否存在于另一个中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">isSubset</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValidSet(set)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="built_in">this</span>.size &lt;= set.size &amp;&amp; [...this].every(<span class="function">(<span class="params">item</span>) =&gt;</span> set.has(item))</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="超集-superset"><a href="#超集-superset" class="headerlink" title="超集 superset"></a>超集 superset</h3><p>isSuperset 操作将判断两个集合是否为超集关系。超集是子集的反操作。当一个集合包含另一个较小或相等大小的集合的所有项目时，它就是一个超集。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">isSuperset</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValidSet(set)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="built_in">this</span>.size &gt;= set.size &amp;&amp; [...set].every(<span class="function">(<span class="params">item</span>) =&gt;</span> <span class="built_in">this</span>.has(item))</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="静态-Set"><a href="#静态-Set" class="headerlink" title="静态 Set"></a>静态 Set</h3><p>静态Set 是一个始终包含它初始化元素的集合，不能添加、删除、清除元素。Javascript Set 不是静态的，它总能在创建后可以公开修改该集合的方法，如 add、delete ，为避免集合被修改，可以创建一个新的 Set ，将其修改方法重置 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticSet</span> <span class="keyword">extends</span> <span class="title">SetHelper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">items</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(items);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.add = <span class="literal">undefined</span>;</span><br><span class="line">        <span class="built_in">this</span>.delete = <span class="literal">undefined</span>;</span><br><span class="line">        <span class="built_in">this</span>.clear = <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>现在就可以使用上面定义的方法操作两个 Set，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> setA = <span class="keyword">new</span> StaticSet(<span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]));</span><br><span class="line"><span class="keyword">const</span> setB = <span class="keyword">new</span> StaticSet(<span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]));</span><br><span class="line"><span class="built_in">console</span>.log([...setA.union(setB)]); <span class="comment">// [ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"><span class="built_in">console</span>.log([...setA.difference(setB)]); <span class="comment">// [ 1, 2 ]</span></span><br><span class="line"><span class="built_in">console</span>.log([...setA.intersection(setB)]); <span class="comment">// [ 3, 4 ]</span></span><br><span class="line"><span class="built_in">console</span>.log([...setB.intersectionDifference(setA)]); <span class="comment">// [ 5, 6, 1, 2 ]</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Set 不限于上面这些操作，之前有介绍过可以用来合并数组去重，由于 Set 和 Array 相互转换很简单，因此可以用到 Array 的场合可以优先考虑一下 Set ，因为在内存使用上， Set 比 Array 占用更少。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/07/20/promise/" data-id="ckr22fzbl0001dcvc0ext1q3g" data-title="交集、并集、差集" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/20/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/20/promise/">交集、并集、差集</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/15/%E5%B8%B8%E4%BD%B3%E7%90%A6/">柯里化函数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
