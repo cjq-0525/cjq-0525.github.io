@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>我的博客园</title>
+  <title>跨域 | 我的博客园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="我的博客园">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="1.跨域问题的由来何谓同源:URL由协议、域名、端口和路径组成，如果两个URL的协议、域名和端口相同，则表示它们同源。浏览器的同源策略，从一个域上加载的脚本不允许访问另外一个域的文档属性 ，是浏览器上为安全性考虑实施的非常重要的安全策略。举个例子：比如一个恶意网站的页面通过iframe嵌入了银行的登录页面（二者不同源），如果没有同源限制，恶意网页上的javascript脚本就可以在用户登录银行的时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域">
+<meta property="og:url" content="http://example.com/2020/05/04/%E8%B7%A8%E5%9F%9F/index.html">
 <meta property="og:site_name" content="我的博客园">
+<meta property="og:description" content="1.跨域问题的由来何谓同源:URL由协议、域名、端口和路径组成，如果两个URL的协议、域名和端口相同，则表示它们同源。浏览器的同源策略，从一个域上加载的脚本不允许访问另外一个域的文档属性 ，是浏览器上为安全性考虑实施的非常重要的安全策略。举个例子：比如一个恶意网站的页面通过iframe嵌入了银行的登录页面（二者不同源），如果没有同源限制，恶意网页上的javascript脚本就可以在用户登录银行的时">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-04T12:43:23.000Z">
+<meta property="article:modified_time" content="2021-07-14T02:23:52.504Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,9 +73,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-跨域" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-跨域" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2020/05/04/%E8%B7%A8%E5%9F%9F/" class="article-date">
   <time class="dt-published" datetime="2020-05-04T12:43:23.000Z" itemprop="datePublished">2020-05-04</time>
@@ -84,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/05/04/%E8%B7%A8%E5%9F%9F/">跨域</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      跨域
     </h1>
   
 
@@ -164,299 +166,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-cookie、localStorage、session" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019/11/05/cookie%E3%80%81localStorage%E3%80%81session/" class="article-date">
-  <time class="dt-published" datetime="2019-11-05T06:25:12.000Z" itemprop="datePublished">2019-11-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019/11/05/cookie%E3%80%81localStorage%E3%80%81session/">cookie、session、localStorage</a>
-    </h1>
+    <a href="/2019/11/05/cookie%E3%80%81localStorage%E3%80%81session/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">cookie、session、localStorage</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="一、Cookie、session和localStorage的区别"><a href="#一、Cookie、session和localStorage的区别" class="headerlink" title="一、Cookie、session和localStorage的区别"></a>一、Cookie、session和localStorage的区别</h3><p>cookie的内容主要包括：名字、值、过期时间、路径和域。路径与域一起构成cookie的作用范围。若不设置时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就会消失。这种生命期为浏览器会话期的cookie被称为会话cookie。</p>
-<p> 会话cookie一般不存储在硬盘而是保存在内存里，当然这个行为并不是规范规定的。若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再打开浏览器这些cookie仍然有效直到超过设定的过期时间。对于保存在内存里的cookie，不同的浏览器有不同的处理方式session机制。</p>
-<p> 当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识（称为session id），如果已包含则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（检索不到，会新建一个），如果客户端请求不包含session id，则为客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。保存这个session id的方式可以采用cookie，这样在交互过程中浏览器可以自动的按照规则把这个标识发送给服务器。</p>
-<h3 id="二、cookie和session的区别："><a href="#二、cookie和session的区别：" class="headerlink" title="二、cookie和session的区别："></a>二、cookie和session的区别：</h3><p><em>1、cookie数据存放在客户的浏览器上，session数据放在服务器上<br> 2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑</em>到安全应当使用session <br>3、session会在一定时间内保存在服务器上，当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie <br>4、单个cookie保存的数<em>据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie<br> 5、建议将登录信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中<br> 6、session保存在服务器，客户端不知道其中的信心；cookie保存在客户端，服务器能够知道其中的信息 <br>7、session中保存的是对象，cookie中保存的是字符串 <br>8、session不能区分路径，同一个用户在访问一个网站期间，所有的session在任何一个地方都可以访问到，而cookie中如果设置了路径参数，那么同一个网站中不同路径下的cookie互相是访问不到的</em></p>
-<h3 id="三、web-Storage和Cookie的区别"><a href="#三、web-Storage和Cookie的区别" class="headerlink" title="三、web Storage和Cookie的区别"></a>三、web Storage和Cookie的区别</h3><p>Web Storage的概念和cookie相似，区别是它是为了更大容量存储设计的，cookie的大小是受限的，并且每次请求一个新的页面的时候cookie都会被发送过去，这样无形中浪费了带宽，另外cookie还需要指定作用域，不可跨域调用。<br> 除此之外，web storage拥有setItem,getItem,removeItem,clear等方法，不像cookie需要前端开发者自己封装setCookie，getCookie。</p>
-<p> 但是cookie也是不可或缺的，cookie的作用是与服务器进行交互，作为http规范的一部分而存在的，而web Storage仅仅是为了在本地“存储”数据而生</p>
-<p> sessionStorage、localStorage、cookie都是在浏览器端存储的数据，其中sessionStorage的概念很特别，引入了一个“浏览器窗口”的概念，sessionStorage是在同源的同窗口中，始终存在的数据，也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一个页面，数据仍然存在，关闭窗口后，sessionStorage就会被销毁，同时“独立”打开的不同窗口，即使是同一页面，sessionStorage对象也是不同的</p>
-<p>Web Storage带来的好处：<br> 1、减少网络流量：一旦数据保存在本地之后，就可以避免再向服务器请求数据，因此减少不必要的数据请求，减少数据在浏览器和服务器间不必要的来回传递</p>
-<p> 2、快速显示数据：性能好，从本地读数据比通过网络从服务器上获得数据快得多，本地数据可以及时获得，再加上网页本身也可以有缓存，因此整个页面和数据都在本地的话，可以立即显示</p>
-<p> 3、临时存储：很多时候数据只需要在用户浏览一组页面期间使用，关闭窗口后数据就可以丢弃了，这种情况使用sessionStorage非常方便</p>
-<h3 id="四、浏览器本地存储与服务器端存储的区别"><a href="#四、浏览器本地存储与服务器端存储的区别" class="headerlink" title="四、浏览器本地存储与服务器端存储的区别"></a>四、浏览器本地存储与服务器端存储的区别</h3><p>其实数据既可以在浏览器本地存储，也可以在服务器端存储 <br>浏览器可以保存一些数据，需要的时候直接从本地存取，sessionStorage、localStorage和cookie都是由浏览器存储在本地的数据<br> 服务器端也可以保存所有用户的所有数据，但需要的时候浏览器要向服务器请求数据。 </p>
-<p>1、服务器端可以保存用户的持久数据，如数据库和云存储将用户的大量数据保存在服务器端</p>
-<p> 2、服务器端也可以保存用户的临时会话数据，服务器端的session机制，如jsp的session对象，数据保存在服务器上，</p>
-<p>实际上，服务器和浏览器之间仅需传递session id即可，服务器根据session id找到对应用户的session对象，会话数据仅在一段时间内有效，这个时间就是server端设置的session有效期</p>
-<p>服务器端保存所有的用户的数据，所以服务器端的开销较大，而浏览器端保存则把不同用户需要的数据分别保存在用户各自的浏览器中，浏览器端一般只用来存储小数据，而非服务可以存储大数据或小数据服务器存储数据安全一些，浏览器只适合存储一般数据</p>
-<h3 id="五、sessionStorage、localStorage和cookie的区别"><a href="#五、sessionStorage、localStorage和cookie的区别" class="headerlink" title="五、sessionStorage、localStorage和cookie的区别"></a>五、sessionStorage、localStorage和cookie的区别</h3><p>共同点：都是保存在浏览器端、且同源的 区别： <br>1、cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，而sessionStorage和localStorage不会自动把数据发送给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下</p>
-<p> 2、存储大小限制也不同，cookie数据不能超过4K，同时因为每次http请求都会携带cookie、所以cookie只适合保存很小的数据，如会话标识。<br>sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大 </p>
-<p>3、数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭之前有效；<br>localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；<br>cookie：只在设置的cookie过期时间之前有效，即使窗口关闭或浏览器关闭 </p>
-<p>4、作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；<br>localstorage在所有同源窗口中都是共享的；<br>cookie也是在所有同源窗口中都是共享的 </p>
-<p>5、web Storage支持事件通知机制，可以将数据更新的通知发送给监听者 6、web Storage的api接口使用更方便</p>
-<h3 id="六、sessionStorage与页面js数据对象的区别"><a href="#六、sessionStorage与页面js数据对象的区别" class="headerlink" title="六、sessionStorage与页面js数据对象的区别"></a>六、sessionStorage与页面js数据对象的区别</h3><p>页面中一般的js对象的生存期仅在当前页面有效，因此刷新页面或转到另一页面这样的重新加载页面的情况，数据就不存在了 </p>
-<p>而sessionStorage只要同源的同窗口中，刷新页面或进入同源的不同页面，数据始终存在，也就是说只要浏览器不关闭，数据仍然存在</p>
-<p>localStorage和sessionStorage的区别</p>
-<p>1、localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。</p>
-<p>2、他们均只能存储字符串类型的对象（虽然规范中可以存储其他原生类型的对象，但是目前为止没有浏览器对其进行实现）。</p>
-<p>3、localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。</p>
-<p>4、sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。</p>
-<p>5、不同浏览器无法共享localStorage或sessionStorage中的信息。相同浏览器的不同页面间可以共享相同的 localStorage（页面属于相同域名和端口），但是不同页面或标签页间无法共享sessionStorage的信息。这里需要注意的是，页面及标 签页仅指顶级窗口，如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/11/05/cookie%E3%80%81localStorage%E3%80%81session/" data-id="ckr2ueczt0002ncvcdxxaf000" data-title="cookie、session、localStorage" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-柯里化函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019/09/25/%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2019-09-25T02:05:30.000Z" itemprop="datePublished">2019-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019/09/25/%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0/">柯里化函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="柯里化函数的应用"><a href="#柯里化函数的应用" class="headerlink" title="柯里化函数的应用"></a>柯里化函数的应用</h2><h3 id="1-柯里化函数："><a href="#1-柯里化函数：" class="headerlink" title="1.柯里化函数："></a>1.柯里化函数：</h3><p>————接收多个参数并返回一个参数的函数新技术</p>
-<h3 id="2-柯里化函数优点：参数复用、延迟执行、提前确认"><a href="#2-柯里化函数优点：参数复用、延迟执行、提前确认" class="headerlink" title="2.柯里化函数优点：参数复用、延迟执行、提前确认"></a>2.柯里化函数优点：参数复用、延迟执行、提前确认</h3><p>参数复用需要输入多个参数，最终只需输入一个，其余通过arguments来获取提前返回避免重复去判断某一条件是否符合，不符合则return 不再继续执行下面的操作延迟执行避免重复的去执行程序，等真正需要结果的时候再执行</p>
-<h3 id="柯里化的缺点"><a href="#柯里化的缺点" class="headerlink" title="柯里化的缺点"></a>柯里化的缺点</h3><p>1.柯里化是牺牲了部分性能来实现的，可能带来的性能损耗：<br>2.存取arguments对象要比存取命名参数要慢一些<br>3.老版本浏览器在arguments.lengths的实现相当慢(新版本浏览器忽略)<br>4.fn.apply() 和 fn.call() 要比直接调用 fn() 慢<br>5.大量嵌套的作用域和闭包会带来开销，影响内存占用和作用域链查找速度</p>
-<h3 id="柯里化的应用"><a href="#柯里化的应用" class="headerlink" title="柯里化的应用"></a>柯里化的应用</h3><p>利用柯里化制定约束条件，管控触发机制<br>处理浏览器兼容（参数复用实现一次性判断）<br>函数节流防抖（延迟执行）<br>ES5前bind方法的实现</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">这里的This是<span class="built_in">window</span>，要改变<span class="built_in">this</span>指向，用Bind</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params">callback,context</span>)</span>&#123;</span><br><span class="line">   context=context||<span class="built_in">window</span>;</span><br><span class="line">   <span class="comment">//把callback方法中的this预先处理为context</span></span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       callback.call(context)</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>核心原理：利用函数执行可以形成一个不销毁的私有作用域，把预先处理的内容都存在这个不销毁的作用域里面，并且返回一个小函数，以后要执行的就是这个小函数。</p>
-<p>fn.bind(obj,100,200)<br>思考：如何给Bind传值</p>
-<p>具体参数不知道，不能定死数据的个数，使用argments</p>
-<p>var outerArg=Array.prototype.slice.call(arguments,2);<br>//利用Array的slice方法取到外部传入参数的第二个及以后多个参数<br>callback.call(context,outerArg)</p>
-<h3 id="二、参数复用"><a href="#二、参数复用" class="headerlink" title="二、参数复用"></a>二、参数复用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currying=<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> args=[];</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">cb</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length===<span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="built_in">this</span>,args)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">   <span class="built_in">Array</span>.prototype.push.apply(args,[].slice.call(<span class="built_in">arguments</span>))</span><br><span class="line">    <span class="comment">//args.push([].slice.call(arguments))</span></span><br><span class="line">    <span class="built_in">console</span>.log(args)</span><br><span class="line">    <span class="keyword">return</span> cb</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b,c</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a+b+c);</span><br><span class="line"> &#125;</span><br><span class="line">  <span class="keyword">var</span> s=currying(add);</span><br><span class="line">  s(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)();</span><br></pre></td></tr></table></figure>
-<p> 运行结果为：</p>
-<p>如果使用args.push([].slice.call(arguments))</p>
-<p>对比可以知道args是一个类数组对象，使用args.push 每次压入一个arguments。并不会对传入的一系列数字行拆分使用。</p>
-<p>而用Array.push(),则把每次传入的数存在数组里面。</p>
-<p>[].slice.call(arguments)这是一个数组，里面只有一个参数，本例来说是[1],[2],[3]<br>而使用apply(args,[].slice.call(arguments))，apply将一个数组默认的转换为一个参数列表，那么参数（1,2,3）陆续传入数组。</p>
-<h3 id="三、提前返回"><a href="#三、提前返回" class="headerlink" title="三、提前返回"></a>三、提前返回</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> addEvent = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123; <span class="comment">//判断是否支持</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">el, sType, fn, capture</span>) </span>&#123;</span><br><span class="line">      el.addEventListener(sType, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        fn.call(el, e);</span><br><span class="line">      &#125;, (capture));</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">el, sType, fn, capture</span>) </span>&#123;</span><br><span class="line">      el.attachEvent(<span class="string">&quot;on&quot;</span> + sType, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        fn.call(el, e);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> elBind=addEvent();</span><br><span class="line"><span class="keyword">var</span> span=<span class="built_in">document</span>.getElementById(<span class="string">&quot;s&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> div=<span class="built_in">document</span>.getElementById(<span class="string">&quot;d&quot;</span>);</span><br><span class="line">elBind(span, <span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">&quot;1&quot;</span>)&#125;, <span class="literal">false</span>)</span><br><span class="line">elBind(div, <span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="string">&quot;1&quot;</span>)&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
-<p> 如上面代码对于监听事件的判断则只会走一次，如果是传统函数则会多次执行。则真是提前返回的好处。</p>
-<p>总结：经测试，上述代码var elBind=addEvent();就会先判断一次浏览器的环境，然后返回一个小函数。</p>
-<p>之后elBind(span, ‘click’, function () {console.log(“1”)}, false)<br>elBind(div, ‘click’, function () {console.log(“1”)}, false)</p>
-<p>均只执行小函数，不会再多次判断浏览器环境。</p>
-<h3 id="四、延迟执行"><a href="#四、延迟执行" class="headerlink" title="四、延迟执行"></a>四、延迟执行</h3><p>举例如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> curryScore=<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> allScore=[];<span class="comment">//用来存取每次输入的单个值</span></span><br><span class="line">  <span class="comment">// 这些用来预处理</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length===<span class="number">0</span>)&#123;</span><br><span class="line">      <span class="comment">// fn(allScore);</span></span><br><span class="line">    fn.apply(<span class="literal">null</span>,allScore)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;   <span class="comment">//往集合里添加分数</span></span><br><span class="line">      allScore=allScore.concat([].slice.call(<span class="built_in">arguments</span>));</span><br><span class="line">      <span class="comment">//allScore.push([].slice.call(arguments))</span></span><br><span class="line">      <span class="comment">//allScore.push(Array.prototype.slice.call(arguments))</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> result=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> addScore=curryScore(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">    result+=<span class="built_in">arguments</span>[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">addScore(<span class="number">3</span>);</span><br><span class="line">addScore(<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line">addScore(<span class="number">3</span>);</span><br><span class="line">addScore();</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line"><span class="comment">//   输出结果：</span></span><br></pre></td></tr></table></figure>
-
-
-<p>这就是第三个特点，延迟执行，再没有输入参数时，不计算总结果。等需要计算的时候，再计算。</p>
-<p>1、如果使用  fn(allScore);输出为</p>
-<p>this为window，arguments是一个对象，第一项为数组<br>    本例使用 fn.apply(null,allScore)，输出为：</p>
-<p>this也为window，但是arguments是一个数组了，</p>
-<p>apply（）方法接受的是一个包含多个参数的数组（或类数组对象）。用apply方法来实现用数组的参数来传递。而apply方法第一个参数，是要替代的对象。没有要替代的，用null。用数组的参数来传递，就可以在计算求和的时候，直接使用arguments[i]。</p>
-<p>apply的一个巧妙的用处,可以将一个数组默认的转换为一个参数列表</p>
-<p>即[param1,param2,param3] 转换为 param1,param2,param3</p>
-<p>2、补充：</p>
-<p>a)     Math.max 可以实现得到数组中最大的一项</p>
-<p>因为Math.max 参数里面不支持Math.max([param1,param2]) 也就是数组</p>
-<p>但是它支持Math.max(param1,param2,param3…),所以可以根据刚才apply的那个特点来解决</p>
-<p>var max=Math.max.apply(null,array),这样轻易的可以得到一个数组中最大的一项(apply会将一个数组装换为一个参数接一个参数的传递给方法)</p>
-<p>   这块在调用的时候第一个参数给了一个null,这个是因为没有对象去调用这个方法,我只需要用这个方法帮我运算,得到返回的结果就行,.所以直接传递了一个null过去</p>
-<p>b)Math.min  可以实现得到数组中最小的一项</p>
-<p>同样和 max是一个思想 var min=Math.min.apply(null,array);</p>
-<p>c)Array.prototype.push 可以实现两个数组合并</p>
-<p>同样push方法没有提供push一个数组,但是它提供了push(param1,param,…paramN) 所以同样也可以通过apply来装换一下这个数组,即:</p>
-<p>var arr1=new Array(“1”,”2”,”3”);  </p>
-<p>var arr2=new Array(“4”,”5”,”6”);  </p>
-<p>Array.prototype.push.apply(arr1,arr2);<br>也可以这样理解,arr1调用了push方法,参数是通过apply将数组装换为参数列表的集合.</p>
-<p> </p>
-<h3 id="反思：为何要使用柯里化"><a href="#反思：为何要使用柯里化" class="headerlink" title="反思：为何要使用柯里化"></a>反思：为何要使用柯里化</h3><p>函数柯里化是函数编程中的一个重要的基础，它为我们提供了一种编程的思维方式。显然，它让我们的函数处理变得复杂，代码调用方式并不直观，还加入了闭包，多层作用域嵌套，会有一些性能上的影响。</p>
-<p>但在一些复杂的业务逻辑封装中，函数柯里化能够为我们提供更好的应对方案，让我们的函数更具自由度和灵活性。</p>
-<p>实际开发中，如果你的逻辑处理相对复杂，不妨换个思维，用函数柯里化来实现，技能包不嫌多。说到底，程序员就是解决问题的那群人。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/09/25/%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0/" data-id="ckr2u6we80000ncvcffhkagp3" data-title="柯里化函数" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-promise" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019/08/05/promise/" class="article-date">
-  <time class="dt-published" datetime="2019-08-05T06:31:42.000Z" itemprop="datePublished">2019-08-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019/08/05/promise/">交集、并集、差集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="什么是-Set"><a href="#什么是-Set" class="headerlink" title="什么是 Set"></a>什么是 Set</h3><p>Set 对象是值的集合，可以按照插入的顺序迭代它的元素，元素只会出现一次，即 Set  是不按特定顺序存储的且值唯一的集合。与堆栈、队列和数组等其他集合类型不同，Set 可用于列表比较，并用于检测集合中是否存在某个项。</p>
-<p>Set 是一种抽象数据类型，它是由其行为定义的，类似堆栈和队列数据结构。由于key-key的特性，这一点与 Map 类似，详情可以参阅《ECMAScript 6的Map映射》。</p>
-<p>Javascript Set</p>
-<p>Javascript 中的 Set 是非常基础和简单的，它不像其他语言那样提供通用的集操作功能。它使用了一种独特的算法（不是基于严格的相等 === ）来检测元素是否相同。</p>
-<p>这意味着在集合中存储 undefined、null 和 NaN 将只会存储一次，即使是 NaN !== NaN ，它通常应用于对象类型的存储。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> setTest = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">0</span>, -<span class="number">0</span>, <span class="literal">Infinity</span>,<span class="literal">null</span>, <span class="literal">undefined</span>, <span class="literal">null</span>, <span class="literal">NaN</span>, <span class="literal">NaN</span>, <span class="literal">Infinity</span>,<span class="literal">null</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(setTest);  <span class="comment">// Set &#123; 0, Infinity, null, undefined, NaN &#125;</span></span><br></pre></td></tr></table></figure>
-<p>从上面的执行结果可以得出以下结论：</p>
-<p>虽然 NaN 和 NaN 不相等，但是在 Set 集合里面只会存在一个undefined 和 Infinity 在 Set 集合里面只会存在一个</p>
-<p>基本 Set 的使用本文就不介绍了，可以参阅 mozilla 网站。</p>
-<h3 id="什么时候使用-Set"><a href="#什么时候使用-Set" class="headerlink" title="什么时候使用 Set"></a>什么时候使用 Set</h3><p>当需要对特定列表执行比较和判断是否相等时，可以使用 Set，下面大家描述一下适用的场合，主要就是数据里的集合操作：</p>
-<p>获取两个集合的并集<br>union<br>获取两个集合的差集<br>difference<br>获取两个集合的交集<br>intersection<br>获取两个集合的对称差集<br>intersectionDifference<br>判断两个集合是否为子集<br>isSubset<br>判断两个集合是否为超集<br>isSuperset</p>
-<h3 id="下面就以这三个场合来介绍-Set-的相关操作。"><a href="#下面就以这三个场合来介绍-Set-的相关操作。" class="headerlink" title="下面就以这三个场合来介绍 Set 的相关操作。"></a>下面就以这三个场合来介绍 Set 的相关操作。</h3><p>Set 操作</p>
-<p>在数学中，每当谈论集合时，都可以执行一些操作，实际上，Set 是数学有限集的计算机实现方式。</p>
-<p>为了在代码中更好的展示 Set 操作，示例代码将 扩展 Javascript Set 以继承其属性和方法，并为其增加其它的方法。</p>
-<p>对于示例代码，只用了一个简单的方法来检查是否为不为空的有效的集合。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SetHelper</span> <span class="keyword">extends</span> <span class="title">Set</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证集合是否为有效集合</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param <span class="type">&#123;*&#125;</span> <span class="variable">set</span></span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@returns</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    _isValid = <span class="function">(<span class="params">set</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> set &amp;&amp; set <span class="keyword">instanceof</span> <span class="built_in">Set</span> &amp;&amp; set.size &gt; <span class="number">0</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="并集-union"><a href="#并集-union" class="headerlink" title="并集 union"></a>并集 union</h3><p>union 操作将合并多个 Set 对象并返回合并后的结果。实现上将当前集和给定集合并到一个数组中并创建它，从而返回一个新的集合。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">union</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValid(set)) <span class="keyword">return</span> <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SetHelper([...this, ...set]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="差集-difference"><a href="#差集-difference" class="headerlink" title="差集 difference"></a>差集 difference</h3><p>difference 操作将返回一个新的集合，新集合只包含在一个集合中并且不在另一个集合中的元素，即数学的差集概念。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">difference</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValid(set)) <span class="keyword">return</span> <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="keyword">const</span> differenceSet = <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="built_in">this</span>.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">        !set.has(item) &amp;&amp; differenceSet.add(item);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> differenceSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="交集-intersection"><a href="#交集-intersection" class="headerlink" title="交集 intersection"></a>交集 intersection</h3><p>intersection 操作返回只包含两个集合共同拥有的元素的新集合。实现上将遍历较小的集合（避免不必要的检查）并检查每一项是否存在于较大的集合中并将其添加到交集中，遍历完成后将返回交集。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">intersection</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> intersectionSet = <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValid(set)) <span class="keyword">return</span> intersectionSet;</span><br><span class="line">    <span class="keyword">const</span> [smallerSet, biggerSet] =</span><br><span class="line">        set.size &lt;= <span class="built_in">this</span>.size ? [set, <span class="built_in">this</span>] : [<span class="built_in">this</span>, set];</span><br><span class="line">    smallerSet.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">        biggerSet.has(item) &amp;&amp; intersectionSet.add(item);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> intersectionSet;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="对称差集-intersectionDifference"><a href="#对称差集-intersectionDifference" class="headerlink" title="对称差集 intersectionDifference"></a>对称差集 intersectionDifference</h3><p>intersectionDifference 操作将返回其中包含两个集合没有交集的所有元素的新集合。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">intersectionDifference</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValid(set)) <span class="keyword">return</span> <span class="keyword">new</span> SetHelper();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SetHelper([</span><br><span class="line">        ...this.difference(set),</span><br><span class="line">        ...set.difference(<span class="built_in">this</span>),</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="子集-subset"><a href="#子集-subset" class="headerlink" title="子集 subset"></a>子集 subset</h3><p>isSubset 操作将判断两个集合是否为子集关系（当一个集合的所有项都包含在另一个集合中时）。实现上首先检查两个集合的大小，如果一个集合更大，则它不能是另一个集合的子集，然后对于每个项目，它检查它是否存在于另一个中。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">isSubset</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValidSet(set)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="built_in">this</span>.size &lt;= set.size &amp;&amp; [...this].every(<span class="function">(<span class="params">item</span>) =&gt;</span> set.has(item))</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="超集-superset"><a href="#超集-superset" class="headerlink" title="超集 superset"></a>超集 superset</h3><p>isSuperset 操作将判断两个集合是否为超集关系。超集是子集的反操作。当一个集合包含另一个较小或相等大小的集合的所有项目时，它就是一个超集。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">isSuperset</span>(<span class="params">set</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">this</span>._isValidSet(set)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="built_in">this</span>.size &gt;= set.size &amp;&amp; [...set].every(<span class="function">(<span class="params">item</span>) =&gt;</span> <span class="built_in">this</span>.has(item))</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="静态-Set"><a href="#静态-Set" class="headerlink" title="静态 Set"></a>静态 Set</h3><p>静态Set 是一个始终包含它初始化元素的集合，不能添加、删除、清除元素。Javascript Set 不是静态的，它总能在创建后可以公开修改该集合的方法，如 add、delete ，为避免集合被修改，可以创建一个新的 Set ，将其修改方法重置 。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticSet</span> <span class="keyword">extends</span> <span class="title">SetHelper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">items</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(items);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.add = <span class="literal">undefined</span>;</span><br><span class="line">        <span class="built_in">this</span>.delete = <span class="literal">undefined</span>;</span><br><span class="line">        <span class="built_in">this</span>.clear = <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>现在就可以使用上面定义的方法操作两个 Set，如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> setA = <span class="keyword">new</span> StaticSet(<span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]));</span><br><span class="line"><span class="keyword">const</span> setB = <span class="keyword">new</span> StaticSet(<span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]));</span><br><span class="line"><span class="built_in">console</span>.log([...setA.union(setB)]); <span class="comment">// [ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"><span class="built_in">console</span>.log([...setA.difference(setB)]); <span class="comment">// [ 1, 2 ]</span></span><br><span class="line"><span class="built_in">console</span>.log([...setA.intersection(setB)]); <span class="comment">// [ 3, 4 ]</span></span><br><span class="line"><span class="built_in">console</span>.log([...setB.intersectionDifference(setA)]); <span class="comment">// [ 5, 6, 1, 2 ]</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Set 不限于上面这些操作，之前有介绍过可以用来合并数组去重，由于 Set 和 Array 相互转换很简单，因此可以用到 Array 的场合可以优先考虑一下 Set ，因为在内存使用上， Set 比 Array 占用更少。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/08/05/promise/" data-id="ckr22s2dy0001qgvc8uuabe1e" data-title="交集、并集、差集" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019/07/20/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2019-07-20T03:30:42.000Z" itemprop="datePublished">2019-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2019/07/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/07/20/hello-world/" data-id="ckr22s2du0000qgvc8t271igr" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>cookie、session、localStorage | 我的博客园</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、Cookie、session和localStorage的区别cookie的内容主要包括：名字、值、过期时间、路径和域。路径与域一起构成cookie的作用范围。若不设置时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就会消失。这种生命期为浏览器会话期的cookie被称为会话cookie。  会话cookie一般不存储在硬盘而是保存在内存里，当然这个行为并不是规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cookie、session、localStorage">
+<meta property="og:url" content="http://example.com/2019/11/05/cookie%E3%80%81localStorage%E3%80%81session/index.html">
+<meta property="og:site_name" content="我的博客园">
+<meta property="og:description" content="一、Cookie、session和localStorage的区别cookie的内容主要包括：名字、值、过期时间、路径和域。路径与域一起构成cookie的作用范围。若不设置时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就会消失。这种生命期为浏览器会话期的cookie被称为会话cookie。  会话cookie一般不存储在硬盘而是保存在内存里，当然这个行为并不是规范">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-05T06:25:12.000Z">
+<meta property="article:modified_time" content="2021-07-14T02:23:39.802Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="我的博客园" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">我的博客园</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-cookie、localStorage、session" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/11/05/cookie%E3%80%81localStorage%E3%80%81session/" class="article-date">
+  <time class="dt-published" datetime="2019-11-05T06:25:12.000Z" itemprop="datePublished">2019-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      cookie、session、localStorage
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="一、Cookie、session和localStorage的区别"><a href="#一、Cookie、session和localStorage的区别" class="headerlink" title="一、Cookie、session和localStorage的区别"></a>一、Cookie、session和localStorage的区别</h3><p>cookie的内容主要包括：名字、值、过期时间、路径和域。路径与域一起构成cookie的作用范围。若不设置时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就会消失。这种生命期为浏览器会话期的cookie被称为会话cookie。</p>
+<p> 会话cookie一般不存储在硬盘而是保存在内存里，当然这个行为并不是规范规定的。若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再打开浏览器这些cookie仍然有效直到超过设定的过期时间。对于保存在内存里的cookie，不同的浏览器有不同的处理方式session机制。</p>
+<p> 当程序需要为某个客户端的请求创建一个session时，服务器首先检查这个客户端的请求里是否已包含了一个session标识（称为session id），如果已包含则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（检索不到，会新建一个），如果客户端请求不包含session id，则为客户端创建一个session并且生成一个与此session相关联的session id，session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。保存这个session id的方式可以采用cookie，这样在交互过程中浏览器可以自动的按照规则把这个标识发送给服务器。</p>
+<h3 id="二、cookie和session的区别："><a href="#二、cookie和session的区别：" class="headerlink" title="二、cookie和session的区别："></a>二、cookie和session的区别：</h3><p><em>1、cookie数据存放在客户的浏览器上，session数据放在服务器上<br> 2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑</em>到安全应当使用session <br>3、session会在一定时间内保存在服务器上，当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie <br>4、单个cookie保存的数<em>据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie<br> 5、建议将登录信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中<br> 6、session保存在服务器，客户端不知道其中的信心；cookie保存在客户端，服务器能够知道其中的信息 <br>7、session中保存的是对象，cookie中保存的是字符串 <br>8、session不能区分路径，同一个用户在访问一个网站期间，所有的session在任何一个地方都可以访问到，而cookie中如果设置了路径参数，那么同一个网站中不同路径下的cookie互相是访问不到的</em></p>
+<h3 id="三、web-Storage和Cookie的区别"><a href="#三、web-Storage和Cookie的区别" class="headerlink" title="三、web Storage和Cookie的区别"></a>三、web Storage和Cookie的区别</h3><p>Web Storage的概念和cookie相似，区别是它是为了更大容量存储设计的，cookie的大小是受限的，并且每次请求一个新的页面的时候cookie都会被发送过去，这样无形中浪费了带宽，另外cookie还需要指定作用域，不可跨域调用。<br> 除此之外，web storage拥有setItem,getItem,removeItem,clear等方法，不像cookie需要前端开发者自己封装setCookie，getCookie。</p>
+<p> 但是cookie也是不可或缺的，cookie的作用是与服务器进行交互，作为http规范的一部分而存在的，而web Storage仅仅是为了在本地“存储”数据而生</p>
+<p> sessionStorage、localStorage、cookie都是在浏览器端存储的数据，其中sessionStorage的概念很特别，引入了一个“浏览器窗口”的概念，sessionStorage是在同源的同窗口中，始终存在的数据，也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一个页面，数据仍然存在，关闭窗口后，sessionStorage就会被销毁，同时“独立”打开的不同窗口，即使是同一页面，sessionStorage对象也是不同的</p>
+<p>Web Storage带来的好处：<br> 1、减少网络流量：一旦数据保存在本地之后，就可以避免再向服务器请求数据，因此减少不必要的数据请求，减少数据在浏览器和服务器间不必要的来回传递</p>
+<p> 2、快速显示数据：性能好，从本地读数据比通过网络从服务器上获得数据快得多，本地数据可以及时获得，再加上网页本身也可以有缓存，因此整个页面和数据都在本地的话，可以立即显示</p>
+<p> 3、临时存储：很多时候数据只需要在用户浏览一组页面期间使用，关闭窗口后数据就可以丢弃了，这种情况使用sessionStorage非常方便</p>
+<h3 id="四、浏览器本地存储与服务器端存储的区别"><a href="#四、浏览器本地存储与服务器端存储的区别" class="headerlink" title="四、浏览器本地存储与服务器端存储的区别"></a>四、浏览器本地存储与服务器端存储的区别</h3><p>其实数据既可以在浏览器本地存储，也可以在服务器端存储 <br>浏览器可以保存一些数据，需要的时候直接从本地存取，sessionStorage、localStorage和cookie都是由浏览器存储在本地的数据<br> 服务器端也可以保存所有用户的所有数据，但需要的时候浏览器要向服务器请求数据。 </p>
+<p>1、服务器端可以保存用户的持久数据，如数据库和云存储将用户的大量数据保存在服务器端</p>
+<p> 2、服务器端也可以保存用户的临时会话数据，服务器端的session机制，如jsp的session对象，数据保存在服务器上，</p>
+<p>实际上，服务器和浏览器之间仅需传递session id即可，服务器根据session id找到对应用户的session对象，会话数据仅在一段时间内有效，这个时间就是server端设置的session有效期</p>
+<p>服务器端保存所有的用户的数据，所以服务器端的开销较大，而浏览器端保存则把不同用户需要的数据分别保存在用户各自的浏览器中，浏览器端一般只用来存储小数据，而非服务可以存储大数据或小数据服务器存储数据安全一些，浏览器只适合存储一般数据</p>
+<h3 id="五、sessionStorage、localStorage和cookie的区别"><a href="#五、sessionStorage、localStorage和cookie的区别" class="headerlink" title="五、sessionStorage、localStorage和cookie的区别"></a>五、sessionStorage、localStorage和cookie的区别</h3><p>共同点：都是保存在浏览器端、且同源的 区别： <br>1、cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递，而sessionStorage和localStorage不会自动把数据发送给服务器，仅在本地保存。cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下</p>
+<p> 2、存储大小限制也不同，cookie数据不能超过4K，同时因为每次http请求都会携带cookie、所以cookie只适合保存很小的数据，如会话标识。<br>sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大 </p>
+<p>3、数据有效期不同，sessionStorage：仅在当前浏览器窗口关闭之前有效；<br>localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；<br>cookie：只在设置的cookie过期时间之前有效，即使窗口关闭或浏览器关闭 </p>
+<p>4、作用域不同，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；<br>localstorage在所有同源窗口中都是共享的；<br>cookie也是在所有同源窗口中都是共享的 </p>
+<p>5、web Storage支持事件通知机制，可以将数据更新的通知发送给监听者 6、web Storage的api接口使用更方便</p>
+<h3 id="六、sessionStorage与页面js数据对象的区别"><a href="#六、sessionStorage与页面js数据对象的区别" class="headerlink" title="六、sessionStorage与页面js数据对象的区别"></a>六、sessionStorage与页面js数据对象的区别</h3><p>页面中一般的js对象的生存期仅在当前页面有效，因此刷新页面或转到另一页面这样的重新加载页面的情况，数据就不存在了 </p>
+<p>而sessionStorage只要同源的同窗口中，刷新页面或进入同源的不同页面，数据始终存在，也就是说只要浏览器不关闭，数据仍然存在</p>
+<p>localStorage和sessionStorage的区别</p>
+<p>1、localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。</p>
+<p>2、他们均只能存储字符串类型的对象（虽然规范中可以存储其他原生类型的对象，但是目前为止没有浏览器对其进行实现）。</p>
+<p>3、localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。</p>
+<p>4、sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。</p>
+<p>5、不同浏览器无法共享localStorage或sessionStorage中的信息。相同浏览器的不同页面间可以共享相同的 localStorage（页面属于相同域名和端口），但是不同页面或标签页间无法共享sessionStorage的信息。这里需要注意的是，页面及标 签页仅指顶级窗口，如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/11/05/cookie%E3%80%81localStorage%E3%80%81session/" data-id="ckr2ueczt0002ncvcdxxaf000" data-title="cookie、session、localStorage" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/04/%E8%B7%A8%E5%9F%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          跨域
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/25/%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">柯里化函数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/04/%E8%B7%A8%E5%9F%9F/">跨域</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/05/cookie%E3%80%81localStorage%E3%80%81session/">cookie、session、localStorage</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/25/%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0/">柯里化函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/05/promise/">交集、并集、差集</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/20/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
